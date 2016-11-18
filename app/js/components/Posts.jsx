@@ -1,42 +1,30 @@
 import React from 'react'
-import { Link } from 'react-router'
-import axios from 'axios'
+import PostPreview  from './PostPreview'
 
 export default class Posts extends React.Component {
 	constructor(props) {
 		super(props)
-		this.state = {posts:[],query:''}
-
-		this.handleChange = this.handleChange.bind(this)
-		this.getFilteredPosts = this.getFilteredPosts.bind(this)
+		console.log("## Posts. enter in constructor")
+		console.log("-> props : ")
+		console.log(props)
 	}
 
-	componentDidMount() {
-		axios.get('https://jsonplaceholder.typicode.com/posts')
-		  .then((response) => {
-		    this.setState({posts:response.data})
-		  })
-		  .catch(function (error) {
-		    console.log(error);
-		  })
-	}
-
-	getFilteredPosts(){
-		return this.state.posts.map((post)=>{
-			if (post.title.includes(this.state.query))
-				return <h3 key={post.id}><Link to={`/post/${post.id}`}>{post.title}</Link></h3>
+	mapPosts(){
+		console.log("## Posts. enter in mapPosts")
+		console.log("-> props : ")
+		console.log(this.props)
+		return this.props.posts.map((post)=>{
+			return (<li key={post.id}><PostPreview post={post}/></li>)
 		})
-	}
-
-	handleChange(event){
-		this.setState({query:event.target.value})
 	}
 
 	render(){
 		return (
-		<div>
-			<input type='text' value={this.state.query} onChange={this.handleChange}/>
-			 { this.getFilteredPosts() }
+		<div >
+			<button className='pure-button'>A Pure Button</button>
+			<ul>
+				 { this.mapPosts() }
+			</ul>
 		</div>
 		)
 	}
