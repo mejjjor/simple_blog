@@ -1,21 +1,21 @@
-import { GET_POSTS } from '../actions'
+import { GET_POSTS, SET_FILTER_POSTS } from '../actions'
 
 const initialState = {
-  posts:[]
+  posts:[],
+  query:''
 }
 
 function blogApp(state = initialState, action) {
-
-	console.log("## reducers.")
-	console.log("-> state : ")
-	console.log(state)
-	console.log("-> action : ")
-	console.log(action)
 	switch (action.type) {
 		case GET_POSTS:
 	    	return Object.assign({}, state, {
 	        	posts: action.posts
 	      	})
+	    case SET_FILTER_POSTS:
+	    	return Object.assign({}, state, {
+	        	query: action.query
+	      	})
+
 	    default:
 	      return state
   	}
