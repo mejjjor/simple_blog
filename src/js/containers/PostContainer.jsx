@@ -1,18 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router'
-import axios from 'axios'
 import { fetchPost } from '../actions'
 import Post from '../components/Post'
 import { connect } from 'react-redux'
 
-class PostsContainer extends React.Component {
-
-	constructor(props) {
-		super(props);
-	}
+class PostContainer extends React.Component {
 
 	componentDidMount() {
-		this.props.dispatch(fetchPost())
+		this.props.dispatch(fetchPost(this.props.params.id))
 	}
 
 	render(){
@@ -22,9 +16,8 @@ class PostsContainer extends React.Component {
 	}
 }
 
-const mapStateToProps = (state,ownProps) => {
+const mapStateToProps = (state) => {
 	return state
 }
 
-
-export default connect(mapStateToProps)(PostsContainer)
+export default connect(mapStateToProps)(PostContainer)

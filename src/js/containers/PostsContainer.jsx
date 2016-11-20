@@ -1,6 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router'
-import axios from 'axios'
 import { fetchPosts,setFilterPosts } from '../actions'
 import Posts from '../components/Posts'
 import { connect } from 'react-redux'
@@ -8,8 +6,8 @@ import { connect } from 'react-redux'
 class PostsContainer extends React.Component {
 
 	constructor(props) {
-		super(props);
-		this.setFilter = this.setFilter.bind(this);
+		super(props)
+		this.setFilter = this.setFilter.bind(this)
 	}
 
 	componentDidMount() {
@@ -33,7 +31,7 @@ class PostsContainer extends React.Component {
 	}
 }
 
-const mapStateToProps = (state,ownProps) => {
+const mapStateToProps = (state) => {
 	return state
 }
 

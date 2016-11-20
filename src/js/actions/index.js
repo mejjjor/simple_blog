@@ -2,6 +2,7 @@ import axios from 'axios'
 import { hashHistory } from 'react-router'
 
 export const GET_POSTS = 'GET_POSTS'
+export const GET_POST = 'GET_POST'
 export const SET_FILTER_POSTS = 'SET_FILTER_POSTS'
 
 
@@ -15,19 +16,14 @@ function getPosts(posts){
 	}
 }
 
-function getPost(postData){
+function getPost(post){
 	return {
-		type:'GET_POST',
-		postData
+		type:GET_POST,
+		post
 	}
 }
 
-function error(error){
-	return {
-		type:'ERROR',
-		error
-	}
-}
+
 
 export const setFilterPosts = (query) => {
 	return {
@@ -37,31 +33,30 @@ export const setFilterPosts = (query) => {
 }
 
 export const fetchPosts = () => {
-  	return  (dispatch)=>{
-	  	return axios.get(`${urlBaseApi}posts`)
-	  	.then((response) => {
-		  	dispatch(getPosts(response.data))
+	return  (dispatch)=>{
+		return axios.get(`${urlBaseApi}posts`)
+		.then((response) => {
+			dispatch(getPosts(response.data))
 		})
-	  	.catch( (error) => {
-		    console.log(error);
-		    dispatch(error(error))
-	  	})
-  	} 
+		.catch( (error) => {
+			console.log(error)
+		})
+	}
 }
 
-export const fetchPost = () => {
-  	return async function (dispatch){
+export const fetchPost = (postId) => {
+
+	return async function (dispatch) {
 		try{
-			const post = await axios.get(`${urlBaseApi}posts/${this.props.params.postId}`)
-			const comments = await axios.get(`${urlBaseApi}comments?postId=${this.props.params.postId}`)
+			const post = await axios.get(`${urlBaseApi}posts/${postId}`)
+			const comments = await axios.get(`${urlBaseApi}comments?postId=${postId}`)
 			const user = await axios.get(`${urlBaseApi}users/${post.data.userId}`)
 			
-			dispatch(getPost({post: post.data, comments:comments.data, user:user.data}))
+			dispatch(getPost({postContent: post.data, comments:comments.data, user:user.data}))
 		}catch(error){
-				console.log(error);
-				dispatch(error(error))
-				hashHistory.push('/')
+			console.log(error)
+			hashHistory.push('/')
 		}
-  	} 
+	} 
 }
 

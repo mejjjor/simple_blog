@@ -20,11 +20,19 @@ module.exports = {
         {
             test: /\.css$/,
             loaders: ['style','css']
+        },
+        {
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: "eslint-loader"
         }]
     },
     plugins:[new HtmlWebpackPlugin()],
     resolve: {
         extensions: ['', '.js', '.jsx']
+    },
+    eslint: {
+        configFile: './.eslintrc'
     },
     watch:true
 }

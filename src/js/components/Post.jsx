@@ -1,21 +1,23 @@
 import React from 'react'
-// import PostContent from 'PostContent'
-// import User from 'User'
-// import Comments from 'Comments'
+import { Link } from 'react-router'
+import PostContent from './PostContent'
+import User from './User'
+import Comments from './Comments'
 
 export default class Post extends React.Component {
 	constructor(props) {
 		super(props)
-
 	}
 
 	render(){
 		return (
 		<div>
-			// <PostContent post={this.props.post}/>
-			// <User user={this.props.user}/>
-			// <Comments comments={this.props.comments}/>
+			<Link to='/'>Sommaire !</Link>
+			<PostContent post={this.props.post.postContent}/>
+			<User user={this.props.post.user}/>
+			<Comments comments={this.props.post.comments}/>
 		</div>
 		)
 	}
 }
+	
