@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 class PostContainer extends React.Component {
 
 	componentDidMount() {
-		this.props.dispatch(fetchPost(this.props.params.id))
+		this.props.dispatch(fetchPost(this.props.params.id,this.props.post.postContent.id))
 	}
 
 	render(){

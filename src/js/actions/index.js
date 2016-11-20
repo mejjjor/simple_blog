@@ -4,6 +4,7 @@ import { hashHistory } from 'react-router'
 export const GET_POSTS = 'GET_POSTS'
 export const GET_POST = 'GET_POST'
 export const SET_FILTER_POSTS = 'SET_FILTER_POSTS'
+export const CLEAN_POST = 'CLEAN_POST'
 
 
 
@@ -20,6 +21,12 @@ function getPost(post){
 	return {
 		type:GET_POST,
 		post
+	}
+}
+
+function cleanPost(){
+	return {
+		type:CLEAN_POST
 	}
 }
 
@@ -44,9 +51,10 @@ export const fetchPosts = () => {
 	}
 }
 
-export const fetchPost = (postId) => {
-
+export const fetchPost = (postId,previousId) => {
 	return async function (dispatch) {
+		if (postId != previousId)
+			dispatch(cleanPost())
 		try{
 			const post = await axios.get(`${urlBaseApi}posts/${postId}`)
 			const comments = await axios.get(`${urlBaseApi}comments?postId=${postId}`)

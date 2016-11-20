@@ -7,9 +7,9 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 
-import PostsContainer from './containers/PostsContainer'
+import App from './containers/App'
 import PostContainer from './containers/PostContainer'
-import blogApp from './reducers'
+import reducers from './reducers'
 import '../css/main.css'
 import '../css/pure-min.css'
 
@@ -18,15 +18,15 @@ document.body.insertBefore(main, document.body.firstElement)
 
 const logger = createLogger()
 
-let store = createStore(blogApp,
+let store = createStore(reducers,
 	applyMiddleware(thunk,logger))
 
 render((
 	<Provider store={store}>
-		<Router history={hashHistory}>
-			<Route path="/" component={PostsContainer}/>
+		<Router history={hashHistory} onUpdate={() => window.scrollTo(0, 0)}>
+			<Route path="/" component={App}/>
 			<Route path="/post/:id" component={PostContainer}/>
-			<Route path="*" component={PostsContainer}/>
+			<Route path="*" component={App}/>
 		</Router>
 	</Provider>
 ), main)

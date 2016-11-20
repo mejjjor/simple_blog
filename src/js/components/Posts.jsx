@@ -5,7 +5,7 @@ export default class Posts extends React.Component {
 
 	mapPosts(){
 		return this.props.posts.map((post)=>{
-			if (post.title.includes(this.props.query))
+			if (post.title.includes(this.props.filter))
 				return (<li key={post.id}><PostPreview post={post}/></li>)
 		})
 	}

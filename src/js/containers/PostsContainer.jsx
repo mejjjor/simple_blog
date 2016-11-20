@@ -5,11 +5,6 @@ import { connect } from 'react-redux'
 
 class PostsContainer extends React.Component {
 
-	constructor(props) {
-		super(props)
-		this.setFilter = this.setFilter.bind(this)
-	}
-
 	componentDidMount() {
 		this.props.dispatch(fetchPosts())
 	}
@@ -20,13 +15,7 @@ class PostsContainer extends React.Component {
 
 	render(){
 		return (
-			<div>
-				<form className="pure-form">
-					<label>Search : </label>
-					<input type='text' onChange={this.setFilter}/>
-				</form>
-				<Posts posts={this.props.posts} query={this.props.query}/>
-			</div>
+			<Posts posts={this.props.posts} filter={this.props.filter.query}/>
 		)
 	}
 }
