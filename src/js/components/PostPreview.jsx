@@ -8,7 +8,7 @@ export default class PostPreview extends React.Component {
 
 	render(){
 		return (
-			<Link to={`/post/${this.props.post.id}`}>{this.props.post.title}</Link>
+			<Link to={`/post/${this.props.post.id}`} className='post-title'>{this.props.post.title}</Link>
 		)
 	}
 }

@@ -6,13 +6,13 @@ export default class Posts extends React.Component {
 	mapPosts(){
 		return this.props.posts.map((post)=>{
 			if (post.title.includes(this.props.filter))
-				return (<li key={post.id}><PostPreview post={post}/></li>)
+				return (<li className='no-list-stype post' key={post.id}><PostPreview post={post}/></li>)
 		})
 	}
 
 	render(){
 		return (
-		<div >
+		<div className='content'>
 			<ul>
 				{ this.mapPosts() }
 			</ul>

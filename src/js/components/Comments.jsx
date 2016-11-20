@@ -8,15 +8,18 @@ export default class Comments extends React.Component {
 
 	mapComments(){
 		return this.props.comments.map((comment)=>{
-			return (<li key={comment.id}><Comment comment={comment}/></li>)
+			return (<li className='no-list-stype' key={comment.id}><Comment comment={comment}/></li>)
 		})
 	}
 
 	render(){
 		return (
-		<ul>
-			{this.mapComments()}
-		</ul>
+		<div>
+			<h5>Comments :</h5>
+			<ul>
+				{this.mapComments()}
+			</ul>
+		</div>
 		)
 	}
 }

@@ -15,7 +15,7 @@ class PostsContainer extends React.Component {
 
 	render(){
 		return (
-			<Posts posts={this.props.posts} filter={this.props.filter.query}/>
+			<Posts posts={this.props.posts} filter={this.props.filter.query} />
 		)
 	}
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router'
 import PostContent from './PostContent'
+import PostPreview from './PostPreview'
 import User from './User'
 import Comments from './Comments'
 
@@ -11,10 +11,10 @@ export default class Post extends React.Component {
 
 	render(){
 		return (
-		<div>
-			<Link to='/'>Sommaire !</Link>
-			<PostContent post={this.props.post.postContent}/>
+		<div className='content'>
+			<PostPreview post={this.props.post.postContent}/>
 			<User user={this.props.post.user}/>
+			<PostContent post={this.props.post.postContent}/>
 			<Comments comments={this.props.post.comments}/>
 		</div>
 		)

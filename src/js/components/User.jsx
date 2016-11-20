@@ -7,10 +7,10 @@ export default class User extends React.Component {
 
 	render(){
 		return (
-		<ul>
-			<li>{this.props.user.name}</li>
-			<li>{this.props.user.website}</li>
-			<li>{this.props.user.address.city}</li>
+		<ul className='no-list-stype post-description'>
+			<li>by {this.props.user.name}</li>
+			<li>from {this.props.user.address.city}</li>
+			<li>info : <a href={this.props.user.website}>{this.props.user.website}</a></li>
 		</ul>
 		)
 	}
