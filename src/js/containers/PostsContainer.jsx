@@ -1,7 +1,7 @@
 import React from 'react'
-import { fetchPosts,setFilterPosts } from '../actions'
-import Posts from '../components/Posts'
 import { connect } from 'react-redux'
+import { fetchPosts,setFilterPosts } from 'actions'
+import Posts from 'posts/Posts'
 
 class PostsContainer extends React.Component {
 

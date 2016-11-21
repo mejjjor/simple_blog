@@ -1,16 +1,14 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar'
+import 'css/index.css'
+import 'css/pure-min.css'
 
 export default class App extends React.Component {
 	render(){
 		return (
 			<div>
-				<div className="Sidebar">
-					<Sidebar />
-				</div>
-				<div className="Content">
-					{this.props.children}
-				</div>
+				<Sidebar />
+				{this.props.children}
 			</div>
 		)
 	}

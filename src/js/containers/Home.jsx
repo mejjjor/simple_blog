@@ -1,7 +1,7 @@
 import React from 'react'
-import { setFilterPosts } from '../actions'
-import FilterContainer from './FilterContainer'
-import PostsContainer from './PostsContainer'
+import { setFilterPosts } from 'actions'
+import FilterContainer from 'containers/FilterContainer'
+import PostsContainer from 'containers/PostsContainer'
 
 export default class App extends React.Component {
 	render(){
@@ -10,7 +10,6 @@ export default class App extends React.Component {
 				<FilterContainer applyTo={setFilterPosts}/>
 				<PostsContainer />
 			</div>
-
 		)
 	}
 }
